@@ -1,0 +1,215 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site_admin.Master.cs" Inherits="Dessert.Site_Admin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <%--載入CSS--%>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%--jQuery first, then Popper.js, then Bootstrap JS--%>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+    <style type="text/css">
+        input[type="submit"]:focus
+        {
+            outline: none; 
+        }
+        *
+        {
+            margin: 0;
+            padding: 0;    
+            color: #333;
+        }
+        h1
+        {
+            padding: 5px;
+            color: #fff;
+            font-size: 25px;
+        }
+        h3
+        {
+            margin: 8px 0;
+            font-weight: bold;
+        }
+        /* Navbar */
+        .navbar 
+        {
+            background-color: #2C3E50;
+        }
+        .dropdown-menu
+        {
+            min-width: 80px;    
+        }
+        .dropdown-item:hover {
+            background-color: #a0a0a0;
+            color: #fff;
+        }
+        .dropdown-item:active {
+            background-color: #ffeae2 ;
+        }
+        /* BreadCrumb */
+        .breadcrumb
+        {
+            margin: 0;
+            font-size: 14px;
+            background-color: transparent;    
+        }
+        /* Table */
+        .table
+        {
+            border: 0;
+            background-color: transparent;
+            color: #333;
+        }        
+        .table td {
+            padding: .75rem;
+            padding-top: 0.95rem;
+            padding-right: 0.75rem;
+            padding-bottom: 0.75rem;
+            padding-left: 0.75rem;
+        }
+        .table-control
+        {
+            margin: 10px 0;
+            padding: 0 10px;
+            height: 34px;
+        }
+        /* Form */
+        .form1-group
+        {
+            margin: 20px 0px;
+        }
+        .form1-control
+        {
+            float: left;    
+        }
+        /* Pagination */
+        .pagination-bar
+        {
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .resultStats
+        {
+            float: left;    
+        }
+        .pagination
+        {
+            float: right;    
+        }
+        .page-link 
+        {
+            margin-left: 10px;
+            color: #66666A;
+            border-radius: 2px;
+        }
+        .page-link:hover 
+        {
+            background-color: transparent;
+            color: #2C3E50;
+            border: 1px solid #A8A8AB;
+        }
+       .page-link:focus 
+        {
+            outline: none;
+            box-shadow: none;
+            color: #fff;
+            background-color: #2C3E50;
+            border-color: #2C3E50;
+        }
+        .page-item.active .page-link 
+        {
+            background-color: #2C3E50;
+            border-color: #2C3E50;
+        }
+        /* Button 樣式 */
+        .btn-admin
+        {
+            background-color: transparent;
+            color: #2C3E50;
+            border: 0;
+        }
+        .btn-admin:hover {
+            color: #3a5269;
+            border-color: #dae0e5;
+        }
+       .btn-admin-dark
+        {   
+            background-color: #2C3E50;
+            color: #fff;
+            border: 0;
+            border-radius: 2px;
+        }
+        .btn-admin-dark:hover 
+        {
+            background-color:#3a5269;
+            color: #fff;
+            border-color:#3a5269;
+        }
+        /* Button 大小 */
+        .btn-size-2x
+        {
+            width: 50px;
+            height: 34px;    
+        }
+        .btn-size-4x
+        {
+            width: 90px; 
+            height: 34px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("[class$='divNotify']").fadeOut(5000, function () {
+                $(this).html("");
+            });
+        });
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+</head>
+     
+<body>
+    <section>
+        <nav class="navbar navbar-expand-lg navbar-dark ">
+            <a class="navbar-brand" href="aOrder_List.aspx"><h1>下午茶後台</h1></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto" >
+                    <li id="aOrderList" class="nav-item" runat="server">
+                        <a class="nav-link " href="aOrder_List.aspx">訂單列表 </a>
+                    </li>
+                    <li id="aStore" class="nav-item" runat="server">
+                        <a class="nav-link" href="aStore.aspx">店家列表 </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                         <a class="navbar-text nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            admin
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                            <a class="dropdown-item" href="uOrder_List.aspx" target="_blank">前台</a>
+                            <a class="dropdown-item" id="logout" href="" runat="server">登出</a>
+                        </div>
+                    </li>
+                </ul>
+          </div>
+        </nav>    
+    </section> 
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>

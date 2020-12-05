@@ -1,0 +1,162 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site_user.Master.cs" Inherits="Dessert.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>使用者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <%--載入CSS--%>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%--jQuery first, then Popper.js, then Bootstrap JS--%>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <style type="text/css">
+         /*去掉按鈕的點選時候出現的藍色邊框 */
+        input[type="submit"]:focus
+        {
+            outline: none; 
+            box-shadow: none;
+        }
+        *
+        {
+            margin: 0;
+            padding: 0;    
+            color: #333;
+        }
+       h1{
+            padding: 5px;
+            color: #ED502E;
+            font-size: 25px;
+            font-weight: 900;
+        }
+        h3
+        {
+            margin: 16px 0;
+            font-weight: bold;    
+        }
+        hr
+        {
+            margin: 24px 0;    
+        }
+        /* Navbar */
+        .navbar-light .navbar-nav .active>.nav-link{
+            color: #ED502E;
+        }
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #ED502E;
+            transition: all 0.3s ease-in-out;
+        }
+        /* BreadCrumb */
+        .breadcrumb
+        {
+            margin: 0;
+            font-size: 14px;
+            background-color: transparent;    
+        }
+        /* Table */
+        .table
+        {
+            border: 0;
+            background-color: transparent;
+        }
+        .table td {
+            padding: .75rem;
+            padding-top: 0.95rem;
+            padding-right: 0.75rem;
+            padding-bottom: 0.75rem;
+            padding-left: 0.75rem;
+        }
+        .table-control
+        {
+            padding: 0 10px;    
+        }
+        /* Pagination */
+        .pagination-bar
+        {
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .resultStats
+        {
+            float: left;    
+        }
+        .pagination
+        {
+            float: right;    
+        }
+        .page-link 
+        {
+            margin-left: 10px;
+            color: #66666A;
+            border-radius: 2px;
+        }
+        .page-link:hover 
+        {
+            background-color: transparent;
+            color: #ED502E;
+        }
+        .page-link:focus 
+        {
+            outline: none;
+            box-shadow: none;
+            color: #fff;
+            background-color: #ED502E;
+            border-color: #ED502E;
+        }
+        .page-item.active .page-link 
+        {
+            background-color: #ED502E;
+            border-color: #ED502E;
+        }
+        /* Button 樣式 */
+        .btn-user-primary {
+            color: #212529;
+            border-color: #a0a0a0;
+            background: #a0a0a0;
+            color: #fff;
+        }
+        .btn-user-primary:hover {
+            color: #fff;
+            background: #adadad;
+        }
+        .btn.disabled, .btn:disabled {
+            color: #333;
+        }           
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <section>
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand" href="uOrder_List.aspx"><h1>下午茶</h1></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li id="uOrderList" class="nav-item" runat="server">
+                        <a class="nav-link" href="uOrder_List.aspx">下午茶清單</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                <asp:Label ID="lblSessionId" class="navbar-text" runat="server" Text=""></asp:Label>
+                    <li class="nav-item ">
+                        <a id="logout" class="nav-link" href="#" runat="server">登出</a>
+                    </li>
+                </ul>
+            </div>
+        </nav> 
+    </section>
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+    </asp:ContentPlaceHolder>
+
+</body>
+</html>
