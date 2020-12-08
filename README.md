@@ -16,7 +16,7 @@
 * 使用者可以依開放的訂單選購商品
 * 使用者可以瀏覽歷史訂單
 
-![Alt text](https://s19.aconvert.com/convert/p3r68-cdx67/ceioq-pc1pk.gif)  
+![dessert](https://github.com/finalena/Dessert/blob/master/dessert.gif)  
 
 ## 結構
 ``` 
@@ -38,7 +38,6 @@
 |    |- Site_user
 │    |- Site_admin
 |- dessert.accdb 資料庫
-|- Web.config 資料庫連線字串設定
 |- ErrorPages
 |- css
       
