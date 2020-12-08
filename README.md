@@ -16,6 +16,8 @@
 * 使用者可以依開放的訂單選購商品
 * 使用者可以瀏覽歷史訂單
 
+![Alt text](https://s19.aconvert.com/convert/p3r68-cdx67/ceioq-pc1pk.gif)  
+
 ## 結構
 ``` 
 | ── |- login - 首頁: 登入/登出
